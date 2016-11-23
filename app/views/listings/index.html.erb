@@ -8,20 +8,20 @@
       <th>Address</th>
       <th>Price</th>
       <th>Description</th>
-      <th>Availability</th>
+      <!-- <th>Availability</th> -->
       <th>Maximum Occupants</th>
       <th>Number of Bedrooms</th>
       <th>Number of Bathrooms</th>
       <th colspan=3>Action</th>
     </tr>
 
-    <%= @listings.each do |listing| %>
+    <% @listings.each do |listing| %>
     <tr>
       <td><%= listing.location %></td>
       <td><%= listing.address %></td>
-      <td><%= listing.price %></td>
+      <td><%= number_to_currency(listing.price, unit: "RM") %></td>
       <td><%= listing.description %></td>
-      <td><%= listing.availability %></td>
+      <!-- <td>< %= listing.availability %></td> -->
       <td><%= listing.max_occupants %></td>
       <td><%= listing.no_of_bedrooms %></td>
       <td><%= listing.no_of_bathrooms %></td>
@@ -30,6 +30,8 @@
       <td><%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>
     <% end %>
+    <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+    <%= page_entries_info @listings %>
   </table>
 </div>
 

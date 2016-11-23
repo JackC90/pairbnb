@@ -1,22 +1,10 @@
 <div class="div-one">
   <%= form_for @user do |f| %>
-    <%= f.label :email %>:
-    <%= f.text_field :email %><br />
-    <%= f.label :password %>:
-    <%= f.text_field :password %><br />
-    <%= f.submit %>
+    <%= render "/users/form", f: f %>
+    <div class=submit>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to sign_in_path, class: "btn btn-link" %>
+    </div>
   <% end %>
 
-  <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
 </div>

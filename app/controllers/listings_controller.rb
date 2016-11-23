@@ -1,7 +1,15 @@
 class ListingsController < ApplicationController
 	def index
-		# @user 		= User.find(params[:user_id])
-		@listings 	= Listing.all
+		@listings 	= Listing.order("created_at DESC").page(params[:page])
+	end
+
+	def show
+	end
+
+	def edit
+	end
+
+	def delete
 	end
 
 	private

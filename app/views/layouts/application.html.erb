@@ -22,6 +22,9 @@
 <body>
 
 <%= render partial: "layouts/navbar" %>
+<div class="account">
+    <%=("Signed in as: " + current_user.email) if signed_in? %>
+</div>
 <div class="container">
     <%= yield %>
 </div>
