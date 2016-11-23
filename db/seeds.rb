@@ -21,6 +21,7 @@ user = User.find(1)
 	user.listings.create(
 		user: user,
 		location: FFaker::Address.city,
+		title: FFaker::Venue.name,
 		address: FFaker::Address.street_address,
 		price: rand(100.00..100_000.00).round(2),
 		description: FFaker::CheesyLingo.sentence,

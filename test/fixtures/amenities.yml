@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pool: false
+  wifi: false
+  gym: false
+  kitchen: false
+  golf_course: false
+  tennis_court: false
+  listing: one
+
+two:
+  pool: false
+  wifi: false
+  gym: false
+  kitchen: false
+  golf_course: false
+  tennis_court: false
+  listing: two

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_in: 2016-11-23
+  date_out: 2016-11-23
+  user: one
+  listing: one
+
+two:
+  date_in: 2016-11-23
+  date_out: 2016-11-23
+  user: two
+  listing: two
