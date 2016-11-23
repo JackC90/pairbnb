@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyText
+  price: 9.99
+  location: MyString
+  description: MyText
+  availability: 1
+  max_occupants: 1
+
+two:
+  address: MyText
+  price: 9.99
+  location: MyString
+  description: MyText
+  availability: 1
+  max_occupants: 1
