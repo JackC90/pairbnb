@@ -1,0 +1,45 @@
+<div class="jumbotron">	
+	<div>
+		<h2><%= @listing.title %></h2>
+	</div>
+
+	<div class="div-one">
+		<table>
+			<tr>
+				<td>Price</td>
+				<td><%= to_RM(@listing.price) %></td>
+			</tr>
+			<tr>
+				<td>Location</td>
+				<td><%= @listing.location %></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><%= @listing.address %></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><%= @listing.description %></td>
+			</tr>
+			<tr>
+				<td>Maximum number of Occupants</td>
+				<td><%= @listing.max_occupants %></td>
+			</tr>
+			<tr>
+				<td>Number of bedrooms</td>
+				<td><%= @listing.no_of_bedrooms %></td>
+			</tr>
+			<tr>
+				<td>Number of bathrooms</td>
+				<td><%= @listing.location %></td>
+			</tr>
+			<tr>
+				<td>Hosted by </td>
+				<td><%= @listing.user.email %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<%= link_to "Edit", edit_listing_path(@listing) %>
+<%= link_to "Back", listings_path %> 

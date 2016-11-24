@@ -1,0 +1,32 @@
+<div class="form_listing">
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+  
+  <%= f.label :price %>:
+  <%= f.text_field :price %><br />
+  
+  <%= f.label :location %>:
+  <%= f.text_field :location %><br />
+  
+  <%= f.label :address %>:
+  <%= f.text_area :address %><br />
+  
+  <%= f.label :description %>:
+  <%= f.text_field :description %><br />
+  
+  <%= f.label :avaiability %>:
+  <%= f.text_field :availability %><br />
+  
+  <%= f.label :max_occupants, "Maximum number of Occupants" %>
+  <%= f.text_field :max_occupants %><br />
+  
+  <%= f.label :no_of_bedrooms, "Number of Bedrooms" %>
+  <%= f.text_field :no_of_bedrooms %><br />
+
+  <%= f.label :no_of_bathrooms, "Number of Bathrooms" %>
+  <%= f.text_field :no_of_bathrooms %><br />
+
+  <%= f.label :images, "Images" %>
+  <%= f.file_field :images, :multiple => true %><br />
+
+</div>

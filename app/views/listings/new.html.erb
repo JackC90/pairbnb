@@ -1,0 +1,10 @@
+<div class="div-one">
+  <%= form_for @listing do |f| %>
+    <%= render "/listings/form", f: f %>
+    <div class=submit>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to listings_path, class: "btn btn-link" %>
+    </div>
+  <% end %>
+
+</div>

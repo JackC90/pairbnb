@@ -8,11 +8,11 @@
 
 # Users
 require 'ffaker'
-# num = (0..24).to_a
-# users = num.map {|n| "user" + n.to_s}
-# emails = users.map {|e| e + "@mail.com" }
+num = (0..24).to_a
+users = num.map {|n| "user" + n.to_s}
+emails = users.map {|e| e + "@mail.com" }
 
-# num.each{ |n| User.create(email: emails[n], password: "123") }
+num.each{ |n| User.create(email: emails[n], password: "123") }
 
 # Listings
 user = User.find(1)
@@ -31,3 +31,6 @@ user = User.find(1)
 		no_of_bathrooms: rand(1..4)
 		)
 }
+
+# Admin
+user.update(role: 2)

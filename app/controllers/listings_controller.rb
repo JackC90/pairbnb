@@ -3,6 +3,15 @@ class ListingsController < ApplicationController
 		@listing = Listing.new
 	end
 
+	def create
+		@listing = Listing.new(listing_params)
+		if @listing.save
+			redirect_to @listing
+		else
+			render "new"
+		end
+	end
+
 	def index
 		@listings 	= Listing.order("created_at DESC").page(params[:page])
 	end
@@ -12,10 +21,14 @@ class ListingsController < ApplicationController
 	end
 
 	def edit
+		@listing = Listing.find(params[:id])
+	end
+
+	def update
 		if current_user.admin?
 			@listing = Listing.find(params[:id])
 			if @listing.update(listing_params)
-				redirect_to @listing
+				redirect_to listing_path(@listing)
 			else
 				render "edit"
 			end
@@ -44,6 +57,7 @@ class ListingsController < ApplicationController
 			:availability,
 			:max_occupants,
 			:no_of_bedrooms,
-			:no_of_bathrooms)
+			:no_of_bathrooms,
+			{:images => []})
 	end
 end

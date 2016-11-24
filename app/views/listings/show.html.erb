@@ -1,0 +1,56 @@
+<div class=show-listing>
+	<div>
+		<h2><%= @listing.title %></h2>
+	</div>
+	<button id="image-btn" data-toggle=modal data-target=".bs-example-modal-lg" style='background: url("<%= @listing.images[0].url %>")'>	
+	</button>
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+    		<div class="modal-content">
+				<%= render partial:"listings/carousel" %>
+			</div>
+		</div>
+	</div>
+
+
+	<div>
+		<table>
+			<tr>
+				<td>Price</td>
+				<td><%= to_RM(@listing.price) %></td>
+			</tr>
+			<tr>
+				<td>Location</td>
+				<td><%= @listing.location %></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><%= @listing.address %></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><%= @listing.description %></td>
+			</tr>
+			<tr>
+				<td>Maximum number of Occupants</td>
+				<td><%= @listing.max_occupants %></td>
+			</tr>
+			<tr>
+				<td>Number of bedrooms</td>
+				<td><%= @listing.no_of_bedrooms %></td>
+			</tr>
+			<tr>
+				<td>Number of bathrooms</td>
+				<td><%= @listing.location %></td>
+			</tr>
+			<tr>
+				<td>Hosted by </td>
+				<td><%= @listing.user.email %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<%= link_to "Edit", edit_listing_path(@listing) %>
+<%= link_to "Back", listings_path %> 
