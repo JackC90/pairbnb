@@ -13,7 +13,7 @@
 
     <% @listings.each do |listing| %>
     <tr>
-      <td><%= image_tag(listing.images) %></td>
+      <td><%= image_tag(listing.images[0]) unless listing.images == [] %></td>
       <td><%= listing.title %></td>
       <td><%= listing.location %></td>
       <td><%= to_RM(listing.price) %></td>

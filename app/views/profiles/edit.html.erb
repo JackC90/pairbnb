@@ -1,0 +1,10 @@
+<div class="div-one">
+  <%= form_for [@user, @user.profiles.build] do |f| %>
+    <%= render "/profiles/form", f: f %>
+    <div class=submit>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to user_profile, method: :patch, class: "btn btn-link" %>
+    </div>
+  <% end %>
+
+</div>

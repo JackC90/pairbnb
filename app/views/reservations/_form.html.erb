@@ -1,0 +1,25 @@
+<div class="form-group">
+    <%= form_for [@listing, @listing.reservations.build] do |f| %>
+        <% if !@reservation.nil? %>
+            <% if @reservation.errors.any? %>
+                <div id="error_explanation">
+                    <h2>
+                        <%= pluralize(@reservation.errors.count, "error") %> prohibited article from being saved:
+                    </h2>
+                    <ul>
+                        <% @reservation.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        <% end %>
+    <%= f.label :date_in, "Check In" %>
+    <input class="datepicker" type="text" data-provide='datepicker' name="reservation[date_in]" data-date-start-date="<%=@listing.date_begin %>" data-date-end-date="<%=@listing.date_end %>" data-date-format="yyyy-mm-dd">
+    <%= f.label :date_in, "Check Out" %>
+    <input class="datepicker" type="text" data-provide='datepicker' name="reservation[date_out]" data-date-start-date="<%=@listing.date_begin %>" data-date-end-date="<%=@listing.date_end %>" data-date-format="yyyy-mm-dd">
+    <%= f.label :no_of_guests, "Number of Guests" %>
+    <%= f.select :no_of_guests, (1..@listing.max_occupants) %>
+    <%= f.submit "Submit" %>
+    <% end %>
+</div>

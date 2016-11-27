@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include Clearance::User
   has_many :authentications, :dependent => :destroy
   has_many :listings
+  has_many :reservations
+  mount_uploaders :avatar, AvatarUploader
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
@@ -21,5 +23,5 @@ class User < ApplicationRecord
     true
   end
 
-  enum role: [:tenant, :landlord, :admin]
+  enum role: [:guest, :host, :admin]
 end

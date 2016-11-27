@@ -1,4 +1,17 @@
 <div class="form_listing">
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@listing.errors.count, "error") %> prohibited article from being saved:
+      </h2>
+      <ul>
+        <% @listing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.label :title %>:
   <%= f.text_field :title %><br />
   
@@ -13,9 +26,19 @@
   
   <%= f.label :description %>:
   <%= f.text_field :description %><br />
+
+  <strong>Availability Dates</strong><br />
+  <%= f.label :date_begin, "Start Date" %>
+  <input class="datepicker" type="text" data-provide='datepicker' name="listing[date_begin]" data-date-format="yyyy-mm-dd">
+  <%= f.label :date_end, "End Date" %>
+  <input class="datepicker-end" type="text" data-provide='datepicker' name="listing[date_end]" data-date-format="yyyy-mm-dd">
+  <br />
   
-  <%= f.label :avaiability %>:
-  <%= f.text_field :availability %><br />
+  <%= f.label :availability %>:
+  <%= f.radio_button :availbility, true, name: "listing[availability]", checked: true %>
+  <%= f.label :availability, "Yes", value: true  %>
+  <%= f.radio_button :availability, false, name: "listing[availability]" %>
+  <%= f.label :availability, "No", value: false %><br />
   
   <%= f.label :max_occupants, "Maximum number of Occupants" %>
   <%= f.text_field :max_occupants %><br />

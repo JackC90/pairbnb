@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   get "auth/facebook", as: "facebook_sign_in"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :listings
+  resources :listings do
+    resources :reservations
+  end
+
+  resources :users do
+    resources :profiles
+  end
+  
   root to: "welcome#index"
 end

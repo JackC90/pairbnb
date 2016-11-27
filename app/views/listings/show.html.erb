@@ -13,12 +13,22 @@
 		</div>
 	</div>
 
+	<div>
+		<div id="available-dates" style="display:none">
+			<p id="start"><%= @start = @listing.date_begin %></p>
+			<p id="end"><%= @end = @listing.date_end %></p>
+		</div>
+		<p>
+			Available <%="#{format_date(@start)} to #{format_date(@end)}"%>
+		</p>
+		<%= render partial:"reservations/new" %>
+	</div>
 
 	<div>
 		<table>
 			<tr>
 				<td>Price</td>
-				<td><%= to_RM(@listing.price) %></td>
+				<td><%= to_RM(@listing.price) %> Per Night</td> 
 			</tr>
 			<tr>
 				<td>Location</td>
@@ -51,6 +61,8 @@
 		</table>
 	</div>
 </div>
+
+
 
 <%= link_to "Edit", edit_listing_path(@listing) %>
 <%= link_to "Back", listings_path %> 
