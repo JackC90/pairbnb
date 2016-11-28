@@ -20,6 +20,7 @@
     <input class="datepicker" type="text" data-provide='datepicker' name="reservation[date_out]" data-date-start-date="<%=@listing.date_begin %>" data-date-end-date="<%=@listing.date_end %>" data-date-format="yyyy-mm-dd">
     <%= f.label :no_of_guests, "Number of Guests" %>
     <%= f.select :no_of_guests, (1..@listing.max_occupants) %>
+    <input type="hidden" name="reservation[total_price]" value="<%= @listing.price %>"
     <%= f.submit "Submit" %>
     <% end %>
 </div>
