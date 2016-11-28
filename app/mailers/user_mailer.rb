@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
 	def welcome_email(user)
 		@user = user
-		@url = 'http://localh.com/login'
+		@url = url_for(@user)
 		mail(to: @user.email, subject: "Welcome to PairBnB")
 	end
 end
