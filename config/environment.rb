@@ -5,5 +5,7 @@ require 'bootstrap-datepicker-rails'
 require 'mini_magick'
 require 'date_validator'
 
+# require 'figaro'
+
 # Initialize the Rails application.
 Rails.application.initialize!
