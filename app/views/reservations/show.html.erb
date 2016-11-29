@@ -1,22 +1,26 @@
 <div class="jumbotron">
-<div class="reservation">
-	<h2>Listing: <%= link_to "#{@reservation.listing.title}", listing_path(@reservation.listing) %> </h2>
-    <h3>Guest Email <%= @reservation.user.email %></h3>
-    <p>
-    	Check In Date
-    	<%= format_date(@reservation.date_in) %>
-    </p>
-    <p>
-    	Check Out Date
-    	<%= format_date(@reservation.date_out) %>
-    </p>
-    <p>
-    	Number of Guests
-    	<%= @reservation.no_of_guests %>
-    </p>
-    <p>
-    	Total Price
-    	<%= to_RM(@reservation.total_price) %>
-    </p>
+    <div class="reservation">
+    	<h2>Listing: <%= link_to "#{@reservation.listing.title}", listing_path(@reservation.listing) %> </h2>
+        <h3>Guest Email <%= @reservation.user.email %></h3>
+        <p>
+        	Check In Date
+        	<%= format_date(@reservation.date_in) %>
+        </p>
+        <p>
+        	Check Out Date
+        	<%= format_date(@reservation.date_out) %>
+        </p>
+        <p>
+        	Number of Guests
+        	<%= @reservation.no_of_guests %>
+        </p>
+        <p>
+        	Total Price
+        	<%= to_RM(@reservation.total_price) %>
+        </p>
+    </div>
 </div>
-</div>
+
+<%= link_to "Back", listing_path(@reservation.listing) %> 
+<%= link_to "Make Payment", new_listing_reservation_payment_path(listing_id: @reservation.listing.id, reservation_id: @reservation.id), style: "#{hide_if_paid(@reservation)}" %>
+<%= link_to "View Payment", listing_reservation_payment_path(@reservation.listing, @reservation, @reservation.payments.first), style: "#{show_if_paid(@reservation)}" %>

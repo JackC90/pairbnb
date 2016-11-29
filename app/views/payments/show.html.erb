@@ -1,0 +1,9 @@
+<div class="jumbotron">
+  <h2>Congratulations!</h2>
+  <p>Payment was successfully made.</p>
+  <p>Amount paid  : <%= to_RM(@payment.amount) %></p>
+  <p>Host         : <%= @reservation.listing.user.email %> </p>
+  <p>Listing      : <%= link_to "#{@reservation.listing.title}", listing_path(@reservation.listing) %>
+  <p>Reservation  : <%= link_to "#{format_date(@reservation.date_in)} to #{format_date(@reservation.date_out)}", listing_reservation_path(@reservation.listing, @reservation) %></p>
+  <p>Date         : <%= @payment.created_at %></p>
+</div>

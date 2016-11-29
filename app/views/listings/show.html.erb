@@ -2,7 +2,7 @@
 	<div>
 		<h2><%= @listing.title %></h2>
 	</div>
-	<button id="image-btn" data-toggle=modal data-target=".bs-example-modal-lg" style='background: url("<%= @listing.images[0].url if !@listing.images == [] %>")'>	
+	<button id="image-btn" data-toggle=modal data-target=".bs-example-modal-lg" style='background: url("<%= @listing.images[0].normal.url if @listing.images[0] != nil %>")'>	
 	</button>
 
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -21,6 +21,9 @@
 		<p>
 			Available <%="#{format_date(@start)} to #{format_date(@end)}" if !@start.nil? && !@end.nil? %>
 		</p>
+		<div id="all-bookings" >
+			<%= all_bookings(@listing) %>
+		</div>
 		<%= render partial:"reservations/new" %>
 	</div>
 
@@ -64,5 +67,5 @@
 
 
 
-<%= link_to "Edit", edit_listing_path(@listing) %>
+<%= link_to "Edit", edit_listing_path(@listing), show: "#{hide_link(@listing)}" %>
 <%= link_to "Back", listings_path %> 

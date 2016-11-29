@@ -45,6 +45,7 @@ gem 'bootstrap-sass', '~>3.3.3'
 gem 'will_paginate-bootstrap'
 gem 'bootstrap-datepicker-rails'
 gem 'date_validator'
+gem 'validates_overlap'
 
 # Images
 gem "mini_magick"
@@ -58,6 +59,7 @@ gem 'sidekiq'
 
 # Payment
 gem "braintree", "~> 2.69.0"
+
 
 
 group :development, :test do

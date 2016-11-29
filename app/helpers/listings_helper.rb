@@ -10,4 +10,21 @@ module ListingsHelper
 			"Not Available"
 		end
 	end
+
+	def owner?(listing)
+		if listing.user == current_user || current_user.admin?
+			true
+		else
+			false
+		end
+	end
+
+	def hide_link(listing)
+		if owner?(listing)
+			return ""
+		else
+			return "display:none"
+		end
+	end
 end
+
