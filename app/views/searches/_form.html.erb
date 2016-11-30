@@ -1,13 +1,43 @@
-<div class="form-group">
-    <%= form_for @search do |f| %>
-    <%= f.label :price, "Price" %>
-    <%= f.checkbox
-
-    <%= f.label :date_in, "Check Out" %>
-    
-    <%= f.label :no_of_guests, "Number of Guests" %>
-    <%= f.select :no_of_guests, (1..@listing.max_occupants) %>
-
-    <%= f.submit "Submit" %>
+<div class="search-form">
+	<p>Filter Search</p>
+    <%= form_for :search, url: "/filter", method: "get" do |f| %>
+    </br>
+    <%= f.label :price_above, "Priced Above" %>
+    <%= f.number_field :price_above %>
+    </br>
+    <%= f.label :price_below, "Priced Below" %>
+    <%= f.number_field :price_below %>
+    </br>
+    <%= f.label :bedrooms, "Bedrooms" %>
+    <%= f.number_field :bedrooms %>
+    </br>
+    <%= f.label :bathrooms, "Bathrooms" %>
+    <%= f.number_field :bathrooms %>
+    </br>
+    <%= f.label :capacity, "Max Capacity" %>
+    <%= f.number_field :capacity %>
+    </br>
+    <p>Amenities</p>
+    <ul>
+        <li>
+        <%= f.label :pool %>
+        <%= f.check_box :has_pool, {}, true, false %>
+        <li>
+        <%= f.label :wifi %>
+        <%= f.check_box :has_wifi, {}, true, false %>
+        <li>
+        <%= f.label :gym %>
+        <%= f.check_box :has_gym, {}, true, false %>
+        <li>
+        <%= f.label :kitchen %>
+        <%= f.check_box :has_kitchen, {}, true, false %>
+        <li>
+        <%= f.label :golf_course %>
+        <%= f.check_box :has_golf_course, {}, true, false %>
+        <li>
+        <%= f.label :tennis_court %>
+        <%= f.check_box :has_tennis_court, {}, true, false %>
+    </ul>
+    <%= f.submit "Search" %>
     <% end %>
 </div>

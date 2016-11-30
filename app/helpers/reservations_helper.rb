@@ -19,4 +19,14 @@ module ReservationsHelper
 		end
 	end
 
+	def days_between(date_in, date_out)
+		d_in 	= date_in
+		d_out 	= date_out 
+		days 	= Array.new
+		while d_in <= d_out do
+			days << d_in.strftime("%Y-%m-%d")
+			d_in += 1
+		end
+		days
+	end
 end

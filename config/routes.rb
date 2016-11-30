@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   #     only: [:create, :edit, :update]
   # end
 
-  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get "auth/:provider/callback" => "sessions#create_from_omniauth"
   get "auth/facebook", as: "facebook_sign_in"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "filter" => "searches#filter", as: "search"
+
   resources :listings do
     resources :reservations do
       resources :payments

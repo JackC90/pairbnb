@@ -26,10 +26,19 @@ class Listing < ApplicationRecord
 
 	# Scopes for Searching
 	scope :available, -> (availability) { where(availability: availability) }
-	scope :starts_with, -> (title) { where("title like ?", "#{title}%")}
+	scope :starts_with, -> (title) { where("title ilike ?", "#{title}%")}
 	scope :filter_location, -> (location) { where(location: "#{location}") }
 	scope :price_above, -> (price) { where("price >= ?", price) }
 	scope :price_below, -> (price) { where("price <= ?", price) }
 	scope :bedrooms, -> (no_of_bedrooms) { where(no_of_bedrooms: no_of_bedrooms)}
 	scope :bathrooms, -> (no_of_bathrooms) { where(no_of_bathrooms: no_of_bathrooms)}
+	scope :capacity, -> (max) { where(max_occupants: max) }
+
+	# Scopes for Searching with Amenities
+	scope :has_pool, 			-> (bool) { joins(:amenity).where("amenities.pool = ?", bool) }
+	scope :has_wifi, 			-> (bool) { joins(:amenity).where("amenities.wifi = ?", bool) }
+	scope :has_gym, 			-> (bool) { joins(:amenity).where("amenities.gym = ?", bool) }
+	scope :has_kitchen, 		-> (bool) { joins(:amenity).where("amenities.kitchen = ?", bool) }
+	scope :has_golf_course, 	-> (bool) { joins(:amenity).where("amenities.golf_course = ?", bool) }
+	scope :has_tennis_court, 	-> (bool) { joins(:amenity).where("amenities.tennis_court = ?", bool) }
 end

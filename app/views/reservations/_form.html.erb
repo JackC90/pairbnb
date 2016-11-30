@@ -15,12 +15,19 @@
             <% end %>
         <% end %>
     <%= f.label :date_in, "Check In" %>
-    <input class="datepicker" type="text" data-provide='datepicker' name="reservation[date_in]" data-date-start-date="<%=@listing.date_begin %>" data-date-end-date="<%=@listing.date_end %>" data-date-format="yyyy-mm-dd">
-    <%= f.label :date_in, "Check Out" %>
-    <input class="datepicker" type="text" data-provide='datepicker' name="reservation[date_out]" data-date-start-date="<%=@listing.date_begin %>" data-date-end-date="<%=@listing.date_end %>" data-date-format="yyyy-mm-dd">
+    <input class="datepicker" id="check-in" type="text" name="reservation[date_in]">
+    
+    <%= f.label :date_out, "Check Out" %>   
+    <input class="datepicker" id="check-out" type="text" name="reservation[date_out]">
+    
     <%= f.label :no_of_guests, "Number of Guests" %>
     <%= f.select :no_of_guests, (1..@listing.max_occupants) %>
-    <input type="hidden" name="reservation[total_price]" value="<%= @listing.price %>"></input>
+    
+    <p style="display:none" id="price-per-night"><%= @price = @listing.price %></p>
+
+    <p>Total Cost = RM<span style="" id="total-cost"><%= @price = @listing.price %></span></p>
+
+    <input id="total-cost-submit" type="hidden" name="reservation[total_price]" value="<%= @total = @price%>"></input>
     <%= f.submit "Submit" %>
     <% end %>
 </div>
