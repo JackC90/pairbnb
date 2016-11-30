@@ -8,5 +8,16 @@ class Reservation < ApplicationRecord
 
   def made_reservations?
   	Reservation.exists?(listing_id: params[:listing_id], user_id: current_user.id)
-  end		
+  end	
+
+  def all_days
+		d_in 	= self.date_in
+		d_out 	= self.date_out 
+		days 	= Array.new
+		while d_in <= d_out do
+			days << d_in.strftime("%Y-%m-%d")
+			d_in += 1
+		end
+		return days
+	end	
 end

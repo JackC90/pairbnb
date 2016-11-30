@@ -34,3 +34,19 @@ user = User.find(1)
 
 # Admin
 user.update(role: 2)
+
+# Amenities
+def seed_amen(listing)
+	listing.create_amenity(
+		pool: [true, false].sample,
+		wifi: [true, false].sample,
+		gym: [true, false].sample,
+		kitchen: [true, false].sample,
+		golf_course: [true, false].sample,
+		tennis_court: [true, false].sample
+	)
+end
+
+
+listings = Listing.all
+listings.each{ |listing| seed_amen(listing) }
