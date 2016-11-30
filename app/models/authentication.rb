@@ -1,4 +1,4 @@
-class Authentication < ApplicationRecord::Base
+class Authentication < ApplicationRecord
    belongs_to :user
 
   def self.create_with_omniauth(auth_hash)

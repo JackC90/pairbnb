@@ -21,7 +21,7 @@
 		<p>
 			Available <%="#{format_date(@start)} to #{format_date(@end)}" if !@start.nil? && !@end.nil? %>
 		</p>
-		<div id="all-bookings" >
+		<div id="all-bookings" style="display:none">
 			<%= @listing.all_bookings %>
 		</div>
 		<%= render partial:"reservations/new" %>
@@ -64,36 +64,8 @@
 		</table>
 	</div>
 
-	<h2> 
-		Amenities
-	</h2>
 	<div>
-		<table id="amen-table">
-			<tr>
-				<td>Pool</td>
-				<td><%= @listing.amenity.pool %></td> 
-			</tr>
-			<tr>
-				<td>Wifi</td>
-				<td><%= @listing.amenity.wifi %></td>
-			</tr>
-			<tr>
-				<td>Gym</td>
-				<td><%= @listing.amenity.gym %></td>
-			</tr>
-			<tr>
-				<td>Kitchen</td>
-				<td><%= @listing.amenity.kitchen %></td>
-			</tr>
-			<tr>
-				<td>Golf Course</td>
-				<td><%= @listing.amenity.golf_course %></td>
-			</tr>
-			<tr>
-				<td>Tennis Court</td>
-				<td><%= @listing.amenity.tennis_court %></td>
-			</tr>
-		</table>
+		<%= render partial:"/amenities/show" %>
 	</div>
 </div>
 

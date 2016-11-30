@@ -1,0 +1,13 @@
+<div class="form-group">
+    <%= form_for @search do |f| %>
+    <%= f.label :price, "Price" %>
+    <%= f.checkbox
+
+    <%= f.label :date_in, "Check Out" %>
+    
+    <%= f.label :no_of_guests, "Number of Guests" %>
+    <%= f.select :no_of_guests, (1..@listing.max_occupants) %>
+
+    <%= f.submit "Submit" %>
+    <% end %>
+</div>

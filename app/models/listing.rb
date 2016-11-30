@@ -1,4 +1,5 @@
 class Listing < ApplicationRecord
+	include Filterable
 	belongs_to :user
 	has_many :reservations
 	has_one :amenity
@@ -24,8 +25,11 @@ class Listing < ApplicationRecord
 	end 
 
 	# Scopes for Searching
-	scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
-	scope :location, -> (location) { where(location: "#{location}") }
+	scope :available, -> (availability) { where(availability: availability) }
+	scope :starts_with, -> (title) { where("title like ?", "#{title}%")}
+	scope :filter_location, -> (location) { where(location: "#{location}") }
 	scope :price_above, -> (price) { where("price >= ?", price) }
 	scope :price_below, -> (price) { where("price <= ?", price) }
+	scope :bedrooms, -> (no_of_bedrooms) { where(no_of_bedrooms: no_of_bedrooms)}
+	scope :bathrooms, -> (no_of_bathrooms) { where(no_of_bathrooms: no_of_bathrooms)}
 end
