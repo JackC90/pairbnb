@@ -58,9 +58,10 @@
 			</tr>
 		</table>
 	</div>
+	</br>
+	<%= link_to "Edit", edit_user_profile_path(current_user, @profile), show: "#{show_if_own(@profile)}" %>
+	<%= link_to "Back", listings_path %>
 </div>
 
 
 
-<%= link_to "Edit", edit_user_profile_path(current_user, @profile), show: "#{show_if_own(@profile)}" %>
-<%= link_to "Back", listings_path %>

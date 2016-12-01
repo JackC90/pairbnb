@@ -27,6 +27,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Post a Listing", new_listing_path if signed_in? %></li>
         <li><%= link_to "Sign Up", sign_up_path %></li>
         <li><%= link_to("Profile", user_profile_path(current_user, current_user.profile)) if check_profile_exists %></li>
         <li><%= link_to("Create Profile", new_user_profile_path(current_user)) if !current_user.nil? & !check_profile_exists %></li>

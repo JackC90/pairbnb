@@ -1,3 +1,4 @@
+
 <div class=show-listing>
 	<div>
 		<h2><%= @listing.title %></h2>
@@ -69,9 +70,10 @@
 	<div>
 		<%= render partial:"/amenities/show" %>
 	</div>
+	</br>
+	<%= link_to "Edit", edit_listing_path(@listing), show: "#{hide_link(@listing)}" %>
+	<%= link_to "Back", listings_path %> 
 </div>
 
 
 
-<%= link_to "Edit", edit_listing_path(@listing), show: "#{hide_link(@listing)}" %>
-<%= link_to "Back", listings_path %> 
