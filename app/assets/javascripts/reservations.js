@@ -1,43 +1,45 @@
-var numberWithCommas = function(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-}
-
-var daysBetween = function(date_in, date_out) {
-	var d_in 	= new Date(date_in);
-	var d_out 	= new Date(date_out);
-	var days 	= [];
-	while (d_in <= d_out) {
-		days.push(d_in);
-		d_in.setDate(d_in.getDate() + 1);
-	};
-	return days;
-}
-
 // var data_date_in 	= $('#check-in').val();
 // var data_date_out 	= $('#check-out').val();
 
-$(document).ready(function() {
-	// window.location.reload(true)
+$(document).ready(function(){
+	// if (window.location.href.indexOf('reload')==-1) {
+ //        window.location.replace(window.location.href+'?reload');
+ //    }
+
+	var numberWithCommas = function(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	function formatDate(date) {
+	    var d = new Date(date),
+	        month = '' + (d.getMonth() + 1),
+	        day = '' + d.getDate(),
+	        year = d.getFullYear();
+
+	    if (month.length < 2) month = '0' + month;
+	    if (day.length < 2) day = '0' + day;
+
+	    return [year, month, day].join('-');
+	}
+
+	var daysBetween = function(date_in, date_out) {
+		var d_in 	= new Date(date_in);
+		var d_out 	= new Date(date_out);
+		var days 	= [];
+		while (d_in <= d_out) {
+			days.push(d_in);
+			d_in.setDate(d_in.getDate() + 1);
+		};
+		return days;
+	}
+
 	var $start 	= $('#available-dates #start').text()
 	var $end 	= $('#available-dates #end').text()
-	if ($("#all-bookings").text() != "" ) {
-		var array 	= JSON.parse($("#all-bookings").text());
-	}
 	var $price = parseFloat($('#price-per-night').text());
 	
+	
 	var available = function(date) {
+		var array 	= JSON.parse($("#all-bookings").text());	
 		formattedDate = formatDate(date);
 		return $.inArray(formattedDate, array) == -1;
 	}

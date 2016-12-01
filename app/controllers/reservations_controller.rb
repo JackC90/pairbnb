@@ -2,7 +2,9 @@ class ReservationsController < ApplicationController
 	def create
 		@listing = Listing.find(params[:listing_id])
 		@reservation = @listing.reservations.new(reservation_params.merge({user_id: current_user.id, listing_id: @listing.id}))
-		
+		total_price = @listing.price * @reservation.all_days.length
+		@reservation.total_price = total_price
+
 		if @reservation.save 
 			ReservationJob.perform_later(current_user, @listing.user, @reservation.id)
 			# # format.html
