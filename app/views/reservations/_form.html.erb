@@ -25,7 +25,7 @@
     
     <p style="display:none" id="price-per-night"><%= @price = @listing.price %></p>
 
-    <p>Total Cost = RM<span style="" id="total-cost"><%= @price = @listing.price %></span></p>
+    <p style="display:none">Total Cost = RM<span style="" id="total-cost"><%= @price = @listing.price %></span></p>
 
     <input id="total-cost-submit" type="hidden" name="reservation[price]" value="<%= @total = @price%>"></input>
     <%= f.submit "Submit" %>
