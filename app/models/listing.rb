@@ -1,5 +1,7 @@
 class Listing < ApplicationRecord
 	include Filterable
+	include PgSearch
+
 	belongs_to :user
 	has_many :reservations
 	has_one :amenity
@@ -25,14 +27,17 @@ class Listing < ApplicationRecord
 	end 
 
 	# Scopes for Searching
-	scope :available, -> (availability) { where(availability: availability) }
-	scope :starts_with, -> (title) { where("title ilike ?", "#{title}%")}
+	pg_search_scope :search_by_title, :against => :title
+	pg_search_scope :search_by_description, :against => :description
+	scope :available, 		-> (availability) { where(availability: availability) }
+	scope :starts_with, 	-> (title) { where("title ilike ?", "#{title}%")}
 	scope :filter_location, -> (location) { where(location: "#{location}") }
-	scope :price_above, -> (price) { where("price >= ?", price) }
-	scope :price_below, -> (price) { where("price <= ?", price) }
-	scope :bedrooms, -> (no_of_bedrooms) { where(no_of_bedrooms: no_of_bedrooms)}
-	scope :bathrooms, -> (no_of_bathrooms) { where(no_of_bathrooms: no_of_bathrooms)}
-	scope :capacity, -> (max) { where(max_occupants: max) }
+	scope :price_above, 	-> (price) { where("price >= ?", price) }
+	scope :price_below, 	-> (price) { where("price <= ?", price) }
+	scope :bedrooms, 		-> (no_of_bedrooms) { where(no_of_bedrooms: no_of_bedrooms)}
+	scope :bathrooms, 		-> (no_of_bathrooms) { where(no_of_bathrooms: no_of_bathrooms)}
+	scope :capacity, 		-> (max) { where(max_occupants: max) }
+
 
 	# Scopes for Searching with Amenities
 	scope :has_pool, 			-> (bool) { joins(:amenity).where("amenities.pool = ?", bool) }
@@ -41,4 +46,5 @@ class Listing < ApplicationRecord
 	scope :has_kitchen, 		-> (bool) { joins(:amenity).where("amenities.kitchen = ?", bool) }
 	scope :has_golf_course, 	-> (bool) { joins(:amenity).where("amenities.golf_course = ?", bool) }
 	scope :has_tennis_court, 	-> (bool) { joins(:amenity).where("amenities.tennis_court = ?", bool) }
+
 end

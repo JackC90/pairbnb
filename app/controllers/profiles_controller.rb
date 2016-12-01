@@ -1,8 +1,12 @@
-class ProfileController < ApplicationController
+class ProfilesController < ApplicationController
+	def new
+		@user = current_user if !current_user.nil?
+	end
+
 	def create
-		@profile = current_user.profiles.new(profile_params)
+		@profile = current_user.build_profile(profile_params)
 		if @profile.save
-			redirect_to @profile
+			redirect_to user_profile_path(@profile.user, @profile)
 		else
 			render "new"
 		end
@@ -10,19 +14,20 @@ class ProfileController < ApplicationController
 
 	def show
 		@user = User.find(params[:user_id])
-		@profile = @user.profiles.find(params[:id])
+		@profile = @user.profile
 	end
 
 	def edit
 		@user = User.find(params[:user_id])
-		@profile = @user.profiles.find(params[:id])
+		@profile = @user.profile
 	end
 
 	def update
 		@user = User.find(params[:user_id])
+		@profile = @user.profile
 		if @user.id == current_user.id
 			if @profile.update(profile_params)
-				redirect_to @profile
+				redirect_to user_profile_path(@profile.user, @profile)
 			else
 				render "edit"
 			end

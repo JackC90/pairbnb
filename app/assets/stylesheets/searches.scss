@@ -1,3 +1,20 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dropdown-menu {
+	padding: 2em;
+	margin: 2em;
+}
+
+.search-form {
+	padding: 2em;
+	padding-bottom: 5em;
+	width: 36em;
+	height: 38em;
+}
+
+#search-btn {
+	float: right;
+	bottom: 0;
+}

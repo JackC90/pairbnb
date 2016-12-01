@@ -18,32 +18,18 @@
         <li><%= render partial: "layouts/signin" %></li>
 <!-- Dropdown Search Panel -->
         <li class="dropdown" style='<%= hide_if_none(@listings) %>'>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Listings <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Listings    <span class="glyphicon glyphicon-search"></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li>
-              <%= render partial:"/searches/form" if @listings.present? %>
+              <%= render partial:"/searches/form" if @listings.present?  %>
             </li>
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Sign Up", sign_up_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <li><%= link_to("Profile", user_profile_path(current_user, current_user.profile)) if check_profile_exists %></li>
+        <li><%= link_to("Create Profile", new_user_profile_path(current_user)) if !current_user.nil? & !check_profile_exists %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
