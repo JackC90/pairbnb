@@ -1,9 +1,13 @@
 <div class="jumbotron">
-  <%= form_for @listing do |f| %>
-    <%= render "/listings/form", f: f %>
+	<h2>New Listing</h2>
+  	<%= form_for @listing do |f| %>
+    	<%= render "/listings/form", f: f %>
+	  	
     <div class=submit>
       <%= f.submit class: "btn btn-primary" %>
     </div>
+
+
   <% end %>
 
 </div>

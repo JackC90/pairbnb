@@ -26,6 +26,21 @@
     <input type="submit" value="Pay" disabled>
   </form>
 
+<script>
+  $(document).ready(function(){
+      // Check if the current URL contains '#'
+      if(document.URL.indexOf("#")==-1)
+      {
+          // Set the URL to whatever it was plus "#".
+          url = document.URL+"#";
+          location = "#";
+
+          //Reload the page
+           location.reload(true);
+      }
+  });
+</script>
+
   <!-- Load the Client component. -->
   <script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 

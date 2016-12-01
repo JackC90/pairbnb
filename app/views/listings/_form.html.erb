@@ -16,16 +16,16 @@
   <%= f.text_field :title %><br />
   
   <%= f.label :price %>:
-  <%= f.text_field :price %><br />
+  <%= f.number_field :price %> Per Night<br />
   
   <%= f.label :location %>:
   <%= f.text_field :location %><br />
   
-  <%= f.label :address %>:
+  <%= f.label :address %>:<br/>
   <%= f.text_area :address %><br />
   
-  <%= f.label :description %>:
-  <%= f.text_field :description %><br />
+  <%= f.label :description %>:<br />
+  <%= f.text_area :description %><br />
 
   <strong>Availability Dates</strong><br />
   <%= f.label :date_begin, "Start Date" %>
@@ -41,19 +41,39 @@
   <%= f.label :availability, "No", value: false %><br />
   
   <%= f.label :max_occupants, "Maximum number of Occupants" %>
-  <%= f.text_field :max_occupants %><br />
+  <%= f.number_field :max_occupants %><br />
   
   <%= f.label :no_of_bedrooms, "Number of Bedrooms" %>
-  <%= f.text_field :no_of_bedrooms %><br />
+  <%= f.number_field :no_of_bedrooms %><br />
 
   <%= f.label :no_of_bathrooms, "Number of Bathrooms" %>
-  <%= f.text_field :no_of_bathrooms %><br />
+  <%= f.number_field :no_of_bathrooms %><br />
 
   <%= f.label :images, "Images" %>
   <%= f.file_field :images, :multiple => true %><br />
-  <label>
-    <%= f.check_box :remove_images %>
-    Remove image
-  </label>
+
+  <%= fields_for :amenity do |u| %> 
+    <h3>Amenities</h3>
+    <ul>
+      <li>
+      <%= u.label :pool %>
+      <%= u.check_box :pool, {}, "true", "false" %>
+      <li>
+      <%= u.label :wifi %>
+      <%= u.check_box :wifi, {}, "true", "false" %>
+      <li>
+      <%= u.label :gym %>
+      <%= u.check_box :gym, {}, "true", "false" %>
+      <li>
+      <%= u.label :kitchen %>
+      <%= u.check_box :kitchen, {}, "true", "false" %>
+      <li>
+      <%= u.label :golf_course %>
+      <%= u.check_box :golf_course, {}, "true", "false" %>
+      <li>
+      <%= u.label :tennis_court %>
+      <%= u.check_box :tennis_court, {}, "true", "false" %>
+    </ul>
+  <% end %>
 
 </div>

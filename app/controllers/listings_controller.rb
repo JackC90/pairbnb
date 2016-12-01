@@ -7,7 +7,12 @@ class ListingsController < ApplicationController
 		@user = current_user
 		@listing = @user.listings.new(listing_params)
 		if @listing.save
-			redirect_to @listing
+			@amenity = @listing.build_amenity(amenity_params)
+			if @amenity.save
+				redirect_to @listing
+			else
+				render "new"
+			end
 		else
 			render "new"
 		end
@@ -28,8 +33,10 @@ class ListingsController < ApplicationController
 
 	def update
 		@listing = Listing.find(params[:id])
+		@amenity = @listing.amenity
 		if current_user.admin? || current_user == @listing.user
 			if @listing.update(listing_params)
+				@amenity.update(amenity_params)
 				redirect_to listing_path(@listing)
 			else
 				render "edit"
@@ -64,6 +71,17 @@ class ListingsController < ApplicationController
 			:no_of_bedrooms,
 			:no_of_bathrooms,
 			{:images => []}
+		)
+	end
+
+	def amenity_params
+		params.require(:amenity).permit(
+			:pool,
+			:wifi,
+			:gym,
+			:kitchen,
+			:golf_course,
+			:tennis_court
 		)
 	end
 end
