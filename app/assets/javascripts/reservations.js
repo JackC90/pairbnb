@@ -29,9 +29,12 @@ var daysBetween = function(date_in, date_out) {
 // var data_date_out 	= $('#check-out').val();
 
 $(document).ready(function() {
+	// window.location.reload(true)
 	var $start 	= $('#available-dates #start').text()
 	var $end 	= $('#available-dates #end').text()
-	var array 	= JSON.parse($("#all-bookings").text())
+	if ($("#all-bookings").text() != "" ) {
+		var array 	= JSON.parse($("#all-bookings").text());
+	}
 	var $price = parseFloat($('#price-per-night').text());
 	
 	var available = function(date) {

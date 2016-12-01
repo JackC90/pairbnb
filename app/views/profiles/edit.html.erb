@@ -1,10 +1,10 @@
 <div class="jumbotron">
 	<h2>Edit Profile</h2>
-	  <%= form_for [@user, @user.profiles.build] do |f| %>
+	  <%= form_for [@user, @profile] do |f| %>
 	    <%= render "/profiles/form", f: f %>
 	    <div class=submit>
 	      <%= f.submit class: "btn btn-primary" %>
-	      <%= link_to user_profile, method: :patch, class: "btn btn-link" %>
+	      
 	    </div>
 	  <% end %>
 </div>
