@@ -47,7 +47,7 @@ $(document).ready(function() {
 		format: "yyyy-mm-dd",
 		startDate: $start,
 		endDate: $end,
-	    // beforeShowDay: available
+	    beforeShowDay: available
 	});
 	
 	$('#check-out').datepicker({
@@ -62,6 +62,6 @@ $(document).ready(function() {
 		format: "yyyy-mm-dd",
 		startDate: $start,
 		endDate: $end,
-	    // beforeShowDay: available
+	    beforeShowDay: available
 	});
 });
