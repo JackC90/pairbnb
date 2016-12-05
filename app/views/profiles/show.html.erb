@@ -60,7 +60,8 @@
 	</div>
 	</br>
 	<%= link_to "Edit", edit_user_profile_path(current_user, @profile), show: "#{show_if_own(@profile)}" %>
-	<%= link_to "Back", listings_path %>
+	<%= link_to "Back", listings_path %></br>
+	<%= link_to "Edit Sign In Info", edit_user_path %>
 </div>
 
 

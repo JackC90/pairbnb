@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <%= form_for @user, url: {action: "update"} do |f| %>
+    <%= render "/users/form", f: f %>
+    <div class=submit>
+      
+
+    </div>
+  <% end %>
+  <%= link_to "Delete My Account", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to permanently delete your account?"} %>
+  <%= link_to "Back", user_profile_path(@user) %>
+</div>

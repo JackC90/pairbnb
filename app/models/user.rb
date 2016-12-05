@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   include Clearance::User
+  validates :email, presence: true, uniqueness: true, format: { with: /.+@.+/, message: "wrong format" }
+  validates :password, presence: true
   has_many :authentications, :dependent => :destroy
-  has_many :listings
-  has_many :reservations
-  has_one :profile
+  has_many :listings, :dependent => :destroy
+  has_many :reservations, :dependent => :destroy
+  has_one :profile, :dependent => :destroy
   mount_uploaders :avatar, AvatarUploader
 
   def self.create_with_auth_and_hash(authentication,auth_hash)

@@ -9,11 +9,14 @@ class ListingsController < ApplicationController
 		if @listing.save
 			@amenity = @listing.build_amenity(amenity_params)
 			if @amenity.save
+				flash[:notice]) = "Listing created."
 				redirect_to @listing
 			else
+				flash[:alert] = "Error creating listing."
 				render "new"
 			end
 		else
+			flash[:alert] = "Error creating listing."
 			render "new"
 		end
 	end
@@ -37,8 +40,10 @@ class ListingsController < ApplicationController
 		if current_user.admin? || current_user == @listing.user
 			if @listing.update(listing_params)
 				@amenity.update(amenity_params)
+				flash[:notice] = "Listing is updated successfully."
 				redirect_to listing_path(@listing)
 			else
+				flash[:alert] = "Error in updating listing."
 				render "edit"
 			end
 		else
@@ -50,6 +55,7 @@ class ListingsController < ApplicationController
 		if current_user.admin?
 			@listing = Listing.find(params[:id])
 			@listing.destroy
+			flash[:notice] = "Listing is deleted"
 			redirect_to listings_path
 		else
 			redirect_to listings_path, notice: "Sorry, you have to be an admin to delete listing."

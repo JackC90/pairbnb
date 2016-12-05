@@ -3,8 +3,8 @@ class Listing < ApplicationRecord
 	include PgSearch
 
 	belongs_to :user
-	has_many :reservations
-	has_one :amenity
+	has_many :reservations, :dependent => :destroy
+	has_one :amenity, :dependent => :destroy
 	self.per_page = 12
 	mount_uploaders :images, ImageUploader
 	validates :date_begin, presence: true
