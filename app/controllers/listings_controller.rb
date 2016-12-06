@@ -7,9 +7,10 @@ class ListingsController < ApplicationController
 		@user = current_user
 		@listing = @user.listings.new(listing_params)
 		if @listing.save
+			amenity_params = {} if amenity_params.nil?
 			@amenity = @listing.build_amenity(amenity_params)
 			if @amenity.save
-				flash[:notice]) = "Listing created."
+				flash[:notice] = "Listing created."
 				redirect_to @listing
 			else
 				flash[:alert] = "Error creating listing."
@@ -37,6 +38,7 @@ class ListingsController < ApplicationController
 	def update
 		@listing = Listing.find(params[:id])
 		@amenity = @listing.amenity
+		amenity_params = {} if amenity_params.nil?
 		if current_user.admin? || current_user == @listing.user
 			if @listing.update(listing_params)
 				@amenity.update(amenity_params)

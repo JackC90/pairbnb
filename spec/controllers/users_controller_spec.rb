@@ -7,11 +7,12 @@ RSpec.describe UsersController, type: :controller do
 	let(:invalid_params_update) {{email: "newtest321@mail.com", password: "123456"}}
 
 	let(:user) { User.create(valid_params) }
-	let(:user1) { User.create(email: "someone@mail.com", password: "123456") }
+	let(:user1) { User.create(email: "someone@mail.com", password: "123456", role: 2) }
 	
 	describe "GET #new" do
 		before do
-			get "users/new"
+			get controller: "clearance/users", action: "new" 
+			# get "sign_in"
 		end
 
 		it "returns http success" do
@@ -54,10 +55,18 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
+	before do
+		sign_in_as user1
+		redirect_to edit_user_path(user)
+	end
+	
 	describe "GET #edit" do
-		before do
-			session[:user_id] = user.id 
-			get :edit, {:id => user.to_param}
+		it "returns http success" do
+			expect(response).to have_http_status(:success)
+		end
+
+		it "renders the edit template" do
+			expect(response).to render_template("users/edit")
 		end
 	end
 

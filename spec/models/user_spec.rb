@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
 
   	describe "validates presence and uniqeness of email" do
   		it { is_expected.to validate_presence_of(:email) }
-  		it { is_expected.to validate_uniqeness_of(:email) }
+  		it { is_expected.to validate_uniqueness_of(:email) }
   	end
 
   	describe "validates password" do

@@ -79,6 +79,7 @@ group :development, :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'rb-fsevent'
+  gem 'rails-controller-testing'
 end
 
 group :development do

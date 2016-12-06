@@ -22,7 +22,7 @@
       <td><%= to_RM(listing.price) %></td>
       <td><%= link_to "Show", listing_path(listing)%></td>
       <td><%= link_to "Edit", edit_listing_path(listing), style:"#{hide_link(listing)}" %></td>
-      <td><%= link_to "Delete", listing, method: :delete, data: {confirm: "Are you sure?"}, style:"#{hide_link(listing)}"  %></td>
+      <td><%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, style:"#{hide_link(listing)}"  %></td>
     </tr>
     <% end %>
     <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>

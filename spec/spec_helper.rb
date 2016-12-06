@@ -21,7 +21,7 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   # require 'factory_girl_rails'
-  require 'factory_girl_rails'
+  
 
 
   config.expect_with :rspec do |expectations|

@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130060017) do
+ActiveRecord::Schema.define(version: 20161206085109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "amenities", force: :cascade do |t|
-    t.boolean  "pool"
-    t.boolean  "wifi"
-    t.boolean  "gym"
-    t.boolean  "kitchen"
-    t.boolean  "golf_course"
-    t.boolean  "tennis_court"
+    t.boolean  "pool",         default: false
+    t.boolean  "wifi",         default: false
+    t.boolean  "gym",          default: false
+    t.boolean  "kitchen",      default: false
+    t.boolean  "golf_course",  default: false
+    t.boolean  "tennis_court", default: false
     t.integer  "listing_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["listing_id"], name: "index_amenities_on_listing_id", using: :btree
   end
 

@@ -13,13 +13,12 @@ RSpec.describe Listing, type: :model do
   	}}
 
   context "validations" do
-
   	it "should have all columns for listing details" do
-  		should_have_db_column(:date_begin).of_type(:date)
-  		should_have_db_column(:date_end).of_type(:date)
-  		should_have_db_column(:title).of_type(:string)
-  		should_have_db_column(:description).of_type(:text)
-  		should_have_db_column(:price).of_type(:decimal)
+  		should have_db_column(:date_begin).of_type(:date)
+  		should have_db_column(:date_end).of_type(:date)
+  		should have_db_column(:title).of_type(:string)
+  		should have_db_column(:description).of_type(:text)
+  		should have_db_column(:price).of_type(:decimal)
   	end
 
   	describe "validates presence of dates" do
@@ -57,7 +56,6 @@ RSpec.describe Listing, type: :model do
   		When(:listing) { Listing.create(valid_params.except(:price)) }
   		Then { listing.valid? == false }
   	end
-
   end
 
   context "association with dependencies" do
