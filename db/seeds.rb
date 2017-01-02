@@ -7,19 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Users
-def generate
+def generate_users
 	num = (0..24).to_a
 	users = num.map {|n| "user" + n.to_s}
 	emails = users.map {|e| e + "@mail.com" }
 
 	num.each{ |n| User.create(email: emails[n], password: "123456") }
+end
 
+def generate_listings
 	# Listings
-	user = User.find_by(email: "user0@mail.com")
-
+	user = User.find_by(email: "user1@mail.com")
 	75.times {
 		user.listings.create(
-			user: user,
+			user: User.find_by(email: "user#{rand(0..24)}@mail.com"),
 			location: FFaker::Address.city,
 			title: FFaker::Venue.name,
 			address: FFaker::Address.street_address,
@@ -31,12 +32,17 @@ def generate
 			no_of_bathrooms: rand(1..4)
 			)
 	}
+end
 
+def generate_admin
 	# Admin
-	user.update(role: 2)
+	User.find_by(email: "user0@mail.com").update(role: 2)
+end
 
-	# Amenities
-	def seed_amen(listing)
+# Amenities
+def generate_amenities
+	listings = Listing.all
+	listings.each{ |listing| 
 		listing.create_amenity(
 			pool: [true, false].sample,
 			wifi: [true, false].sample,
@@ -44,12 +50,10 @@ def generate
 			kitchen: [true, false].sample,
 			golf_course: [true, false].sample,
 			tennis_court: [true, false].sample
-		)
-	end
-
-
-	listings = Listing.all
-	listings.each{ |listing| seed_amen(listing) }
+	) }
 end
 
-generate
+generate_users
+generate_listings
+generate_admin
+generate_amenities
