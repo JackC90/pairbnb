@@ -17,10 +17,10 @@ end
 
 def generate_listings
 	# Listings
-	user = User.find_by(email: "user1@mail.com")
+	
 	75.times {
-		user.listings.create(
-			user: User.find_by(email: "user#{rand(0..24)}@mail.com"),
+		listings.create(
+			user_id: User.find_by(email: "user#{rand(0..24)}@mail.com").id,
 			location: FFaker::Address.city,
 			title: FFaker::Venue.name,
 			address: FFaker::Address.street_address,
